@@ -144,8 +144,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.ScopedRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'product': '50/day',
-        'reviews':'10/day',
+        'product': '5/day',
+        'reviews':'5/day',
         'users': '2/day',
         'categories':'3/day',
         'brand':'3/day',

@@ -39,6 +39,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset =  ShopUser.objects.all()
     permission_classes = [permissions.AllowAny]
     authentication_classes = []
+    throttle_scope = 'users'
 
     @extend_schema(tags=['Auth'],summary='create new user account')
     def create(self, request, *args, **kwargs):
@@ -75,6 +76,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
     filterset_fields = ['category', 'in_stock']
     search_fields = ['name', 'color']
+    throttle_scope = 'product'
 
     @extend_schema(tags=['Product'],summary='create new product',
     )
@@ -110,6 +112,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']
+    throttle_scope = 'categories'
 
     @extend_schema(tags=['Category'],summary='create new category',
     )
@@ -142,6 +145,7 @@ class BrandViewSet(viewsets.ModelViewSet):
     serializer_class = BrandSerialzier
     queryset =  Brand.objects.all()
     permission_classes = [permissions.IsAuthenticated]
+    throttle_scope = 'brand'
 
     @extend_schema(tags=['Brand'],summary='create new brand',
     )
